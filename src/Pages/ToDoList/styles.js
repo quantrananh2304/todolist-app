@@ -8,6 +8,7 @@ const styles = {
         borderWidth: 1,
         borderColor: "black",
         borderStyle: "solid",
+        height: "100vh",
     },
 };
 

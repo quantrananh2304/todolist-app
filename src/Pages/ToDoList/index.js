@@ -15,7 +15,10 @@ function ToDoList(props) {
 
     return (
         <>
-            <div className="col-lg-3" style={styles.container}>
+            <div
+                className="col-lg-3 col-md-3 text-center"
+                style={styles.container}
+            >
                 <h2>New Task</h2>
                 <AppForm
                     initValues={{
@@ -27,18 +30,21 @@ function ToDoList(props) {
                     onSubmit={handleSubmitForm}
                     validationSchema={validationSchema}
                 >
-                    <div className="form-group-row" style={styles.boxContainer}>
+                    <div className="form-group row">
                         <Field
                             type="text"
                             id="taskName"
                             name="taskName"
                             className="form-control"
+                            placeholder="Add new task..."
                         />
                     </div>
-                    <div className="form-group-row">
+
+                    <div className="form-group row">
                         <label htmlFor="taskDescription">Description</label>
                     </div>
-                    <div className="form-group-row">
+
+                    <div className="form-group row">
                         <Field
                             type="text"
                             id="taskDescription"
@@ -49,13 +55,64 @@ function ToDoList(props) {
                                 console.log("field", field);
                                 console.log("form", form);
                                 console.log("meta", meta);
-                                return <textarea cols={"auto"} />;
+                                return <textarea style={{ width: "100%" }} />;
                             }}
                         </Field>
                     </div>
+
+                    <div className="form-group row">
+                        <div className="col-md-6">
+                            <label htmlFor="dueDate">Due date</label>
+                            <Field className="form-control">
+                                {({ form, field }) => {
+                                    return (
+                                        <input
+                                            type="date"
+                                            name="dueDate"
+                                            id="dueDate"
+                                            style={{ width: "100%" }}
+                                        />
+                                    );
+                                }}
+                            </Field>
+                        </div>
+
+                        <div className="col-md-6">
+                            <label htmlFor="priority">Priority</label>
+                            <Field className="form-control">
+                                {({ form }) => {
+                                    return (
+                                        <div>
+                                            <select
+                                                name="priority"
+                                                id="priority"
+                                                style={{
+                                                    width: "100%",
+                                                }}
+                                            >
+                                                <option value="low">low</option>
+                                                <option value="normal">
+                                                    normal
+                                                </option>
+                                                <option value="high">
+                                                    high
+                                                </option>
+                                            </select>
+                                        </div>
+                                    );
+                                }}
+                            </Field>
+                        </div>
+                    </div>
+
+                    <div className="form-group row">
+                        <button type="submit" class="btn btn-success">
+                            Add
+                        </button>
+                    </div>
                 </AppForm>
             </div>
-            <div className="col-lg-9" style={styles.container}></div>
+            <div className="col-lg-9 col-md-9"></div>
         </>
     );
 }

@@ -1,3 +1,3 @@
-import AppForm from "./AppForm";
+import Chart from './OrgChart';
 
-export { AppForm };
+export { Chart };
